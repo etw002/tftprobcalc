@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Slider Page</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+    .row { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+    label { width: 120px; }
+    input[type="range"] { flex: 1; }
+    .val { width: 60px; text-align: right; }
+    .result { font-size: 2rem; font-weight: bold; margin-top: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>My Calculator</h1>
+
+  <div class="row">
+    <label>Speed</label>
+    <input type="range" min="0" max="100" value="50" id="speed">
+    <span class="val" id="speed-out">50</span>
+  </div>
+
+  <div class="row">
+    <label>Time (hrs)</label>
+    <input type="range" min="1" max="10" value="5" id="time">
+    <span class="val" id="time-out">5</span>
+  </div>
+
+  <div class="result">Distance: <span id="distance">250</span> miles</div>
+
+  <script>
+    function update() {
+      const s = +document.getElementById('speed').value;
+      const t = +document.getElementById('time').value;
+      document.getElementById('speed-out').textContent = s;
+      document.getElementById('time-out').textContent = t;
+      document.getElementById('distance').textContent = s * t;
+    }
+    document.getElementById('speed').addEventListener('input', update);
+    document.getElementById('time').addEventListener('input', update);
+    update();
+  </script>
+</body>
+</html>
